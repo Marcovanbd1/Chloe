@@ -166,10 +166,11 @@
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.15);
     color: rgba(247,242,232,0.85);
-    font-size: 13px;
+    font-size: clamp(11px, 3vw, 13px);
     font-weight: 400;
-    padding: 6px 16px;
+    padding: 6px 14px;
     border-radius: 100px;
+    white-space: nowrap;
   }
 
   .hero-scroll {
@@ -223,7 +224,7 @@
 
   /* ── SECTIONS ── */
   .section {
-    padding: 80px 24px;
+    padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 24px);
     max-width: 860px;
     margin: 0 auto;
   }
@@ -366,13 +367,13 @@
 
   .lido-quote {
     border-left: 4px solid var(--green-bright);
-    padding: 24px 32px;
+    padding: clamp(16px, 4vw, 24px) clamp(16px, 5vw, 32px);
     margin: 40px 0;
     background: white;
     border-radius: 0 8px 8px 0;
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: clamp(18px, 3vw, 24px);
+    font-size: clamp(16px, 4vw, 24px);
     color: var(--green-deep);
     line-height: 1.5;
   }
@@ -632,7 +633,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 32px;
   }
 
@@ -640,7 +641,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 13px 22px;
+    padding: 14px 20px;
     border-radius: 100px;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
@@ -649,6 +650,17 @@
     cursor: pointer;
     border: none;
     transition: transform 0.15s ease, opacity 0.15s ease;
+    min-height: 48px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    .share-btn {
+      flex: 1 1 calc(50% - 10px);
+      justify-content: center;
+      font-size: 13px;
+      padding: 14px 12px;
+    }
   }
 
   .share-btn:hover {
@@ -745,6 +757,54 @@
     text-transform: uppercase;
   }
 
+
+  /* ── CANDIDATE PHOTO ── */
+  .candidate-photo-section {
+    background: var(--green-pale);
+    padding: 48px 24px 0;
+    text-align: center;
+  }
+
+  .candidate-photo-wrap {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .candidate-photo-box {
+    width: min(220px, 60vw);
+    height: min(220px, 60vw);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 4px solid var(--green-bright);
+    box-shadow: 0 8px 32px rgba(26,58,31,0.18);
+  }
+
+  .candidate-photo-inner {
+    position: relative !important;
+    width: 100%;
+    height: 100%;
+    background-size: cover !important;
+    background-position: center 15% !important;
+  }
+
+  .candidate-photo-name {
+    margin-top: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: 700;
+    color: var(--green-deep);
+  }
+
+  .candidate-photo-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(11px, 3vw, 13px);
+    font-weight: 400;
+    color: var(--text-mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
 </style>
 </head>
 <body>
@@ -953,29 +1013,14 @@
 
 
 <!-- CANDIDATE PHOTO -->
-<section style="background: var(--green-pale); padding: 48px 24px 0; text-align: center;">
-  <div style="display: inline-block; position: relative;">
-    <div style="
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto;
-      border: 4px solid var(--green-bright);
-      box-shadow: 0 8px 32px rgba(26,58,31,0.18);
-    ">
-      <div class="hero-photo" style="
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center 15%;
-        border-radius: 50%;
-      "></div>
+<section class="candidate-photo-section">
+  <div class="candidate-photo-wrap">
+    <div class="candidate-photo-box">
+      <div class="hero-photo candidate-photo-inner"></div>
     </div>
+    <p class="candidate-photo-name">Chloe Turner</p>
+    <p class="candidate-photo-title">Green Party · Minchinhampton Division</p>
   </div>
-  <p style="margin-top: 16px; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--green-deep);">Chloe Turner</p>
-  <p style="font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; color: var(--text-mid); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px;">Green Party · Minchinhampton Division</p>
 </section>
 
 <!-- VOTE CTA -->
